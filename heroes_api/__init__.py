@@ -1,5 +1,9 @@
 from flask import Flask
+from flask_restful import Api
+
+from heroes_api.resources.hero import Hero
 
 app = Flask(__name__)
+api = Api(app)
 
-import heroes_api.views
+api.add_resource(Hero, '/api/heroes')
