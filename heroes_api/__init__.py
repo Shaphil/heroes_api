@@ -9,7 +9,7 @@ CORS(app)
 api = Api(app)
 db = SQLAlchemy(app)
 
-from heroes_api.resources.heroes_list import HeroApi, HeroesListApi
+from heroes_api.resources.hero import HeroApi, HeroesListApi
 
 api.add_resource(HeroApi, '/api/heroes/<id>', endpoint='hero_api')
 api.add_resource(HeroesListApi, '/api/heroes')
