@@ -27,6 +27,15 @@ class HeroApi(Resource):
         db.session.commit()
         return hero, 200
 
+    def delete(self, id):
+        hero = Hero.query.get(id)
+        if hero:
+            db.session.delete(hero)
+            db.session.commit()
+            return 200
+
+        return abort(400)
+
 
 class HeroesListApi(Resource):
     @marshal_with(hero_fields)
