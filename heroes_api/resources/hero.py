@@ -19,6 +19,14 @@ class HeroApi(Resource):
         hero = Hero.query.filter_by(id=id).first()
         return hero
 
+    @marshal_with(hero_fields)
+    def put(self, id):
+        hero = Hero.query.get(id);
+        args = parser.parse_args()
+        hero.name = args['name']
+        db.session.commit()
+        return hero, 200
+
 
 class HeroesListApi(Resource):
     @marshal_with(hero_fields)
